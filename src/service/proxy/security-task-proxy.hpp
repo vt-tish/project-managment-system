@@ -5,7 +5,7 @@
 #include <src/dtos/move-task-to-todo-dto.hpp>
 #include <src/service/task-service.hpp>
 #include <src/service/auth-service.hpp>
-#include <proxy/base-security-proxy.hpp>
+#include <src/service/proxy/base-security-proxy.hpp>
 
 class SecurityTaskProxy : public BaseSecurityProxy, public TaskService
 {

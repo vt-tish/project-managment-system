@@ -2,7 +2,7 @@
 
 #include <src/service/user-service.hpp>
 #include <src/service/auth-service.hpp>
-#include <proxy/base-security-proxy.hpp>
+#include <src/service/proxy/base-security-proxy.hpp>
 
 class SecurityUserProxy : public BaseSecurityProxy, public UserService
 {

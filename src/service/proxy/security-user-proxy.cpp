@@ -1,4 +1,4 @@
-#include <proxy/security-user-proxy.hpp>
+#include <src/service/proxy/security-user-proxy.hpp>
 
 SecurityUserProxy::SecurityUserProxy(UserService& userService, AuthService& authService)
 :

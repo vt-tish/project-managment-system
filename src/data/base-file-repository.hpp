@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <utility>
 #include <vector>
+#include <exception>
 
 #include <src/data/repository.hpp>
 #include <src/helpers/byte-stream/byte-stream.hpp>
@@ -91,6 +92,9 @@ protected:
 public:
     ~BaseFileRepository() override
     {
+        if (std::uncaught_exceptions() > 0)
+            return;
+
         try
         {
             save();

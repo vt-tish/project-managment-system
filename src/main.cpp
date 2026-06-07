@@ -1,21 +1,37 @@
 #include <iostream>
 
 #include <src/helpers/date-time.hpp>
+#include <src/helpers/ui/task-string-builder.hpp>
 
-#include "data/todo-task-file-repository.hpp"
+int main() 
+{
+    Task task = Task::builder("Implement Login UI", 1)
+        .withDescription("Create a nice console UI for login process.")
+        .withPriority(1)
+        .withPoints(5)
+        .build();
 
-int main() {
-    TodoTaskFileRepository* repo = new TodoTaskFileRepository();
+    task.addSubtask(Subtask("Read requirements", "Understand what needs to be built"));
+    
+    Subtask devTask("Write code", "Create the actual implementation");
+    devTask.setDone();
+    devTask.setHours(2.5f);
+    task.addSubtask(devTask);
 
-    repo->save(Task::builder("TestTitle1").withPriority(3).build());
-    repo->save(Task::builder("TestTitle2").withPriority(2).build());
-    repo->save(Task::builder("Fraud").withPriority(2).build());
-    repo->save(Task::builder("TestTitle3").withPriority(1).build());
+    std::string formattedTask = TaskStringBuilder(task)
+        .appendId()
+        .appendTitle()
+        .appendDescription()
+        .appendPriority()
+        .appendPoints()
+        .appendStatus()
+        .appendSubtasks()
+        .appendTimestamps()
+        .build();
 
-    for (const Task& it : repo->getSorted())
-        std::cout << it.getTitle() << " " << it.getPriority() << std::endl;
-
-    delete repo;
+    std::cout << "--- Task Details ---\n";
+    std::cout << formattedTask;
+    std::cout << "--------------------\n";
 
     return 0;
 }

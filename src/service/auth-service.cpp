@@ -1,5 +1,3 @@
-#pragma once
-
 #include <stdexcept>
 #include <src/service/auth-service.hpp>
 

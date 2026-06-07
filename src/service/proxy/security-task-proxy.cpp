@@ -1,5 +1,6 @@
 #include <stdexcept>
-#include <src/service/security-task-proxy.hpp>
+
+#include <src/service/proxy/security-task-proxy.hpp>
 
 SecurityTaskProxy::SecurityTaskProxy(TaskService& taskService, AuthService& authService)
 :

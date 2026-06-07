@@ -17,6 +17,7 @@ public:
     UserDto(unsigned int id, std::string username, std::string fullName, User::Role role,
         const DateTime& createdAt)
     :
+        id(id),
         username(std::move(username)),
         fullName(std::move(fullName)),
         role(role),
