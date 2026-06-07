@@ -16,12 +16,13 @@ public:
 
 public:
     MoveTaskToTodoDto(unsigned int priority, unsigned int points, float hours,
-        std::string assignedToUsername)
+        std::string assignedToUsername, std::vector<MoveSubtaskToTodoDto> subtasks = {})
     :
         priority(priority),
         points(points),
         hours(hours),
-        assignedUsername(std::move(assignedToUsername))
+        assignedUsername(std::move(assignedToUsername)),
+        subtasks(std::move(subtasks))
     {}
 
 };

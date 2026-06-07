@@ -13,6 +13,7 @@ public:
     virtual void create(const CreateTaskDto& createTaskDto, std::string creatorUsername) = 0;
     virtual Task getInProgressTaskById(unsigned int id) = 0;
     virtual std::vector<Task> getInbox() const = 0;
+    virtual Task getFirstInboxTask() const = 0;
     virtual std::vector<Task> getTodo() const = 0;
     virtual std::vector<Task> getInProgress() const = 0;
     virtual std::vector<Task> getDone() const = 0;

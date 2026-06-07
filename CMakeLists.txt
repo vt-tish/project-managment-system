@@ -63,6 +63,30 @@ else()
             src/ui/commands/archive-done-command.cpp
             src/ui/commands/logout-command.hpp
             src/ui/commands/logout-command.cpp
+            src/ui/commands/create-task-command.hpp
+            src/ui/commands/create-task-command.cpp
+            src/ui/commands/show-inbox-command.hpp
+            src/ui/commands/show-inbox-command.cpp
+            src/ui/commands/move-to-todo-command.hpp
+            src/ui/commands/move-to-todo-command.cpp
+            src/ui/commands/show-todo-command.hpp
+            src/ui/commands/show-todo-command.cpp
+            src/ui/commands/move-to-in-progress-command.hpp
+            src/ui/commands/move-to-in-progress-command.cpp
+            src/ui/commands/show-in-progress-command.hpp
+            src/ui/commands/show-in-progress-command.cpp
+            src/ui/commands/mark-subtask-done-command.hpp
+            src/ui/commands/mark-subtask-done-command.cpp
+            src/ui/commands/move-to-done-command.hpp
+            src/ui/commands/move-to-done-command.cpp
+            src/ui/commands/show-done-command.hpp
+            src/ui/commands/show-done-command.cpp
+            src/ui/commands/create-user-command.hpp
+            src/ui/commands/create-user-command.cpp
+            src/ui/commands/change-role-command.hpp
+            src/ui/commands/change-role-command.cpp
+            src/ui/commands/show-users-command.hpp
+            src/ui/commands/show-users-command.cpp
             src/helpers/ui/task-string-builder.hpp
             src/helpers/ui/task-string-builder.cpp
             src/ui/states/session-state.cpp

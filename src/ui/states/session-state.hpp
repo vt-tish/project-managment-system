@@ -1,6 +1,6 @@
 #pragma once
 
-#include <map>
+#include <vector>
 #include <memory>
 #include <src/ui/states/ui-state.hpp>
 #include <src/ui/commands/command.hpp>
@@ -8,7 +8,7 @@
 class SessionState : public UIState
 {
 private:
-    std::map<std::string, std::unique_ptr<Command>> commands;
+    std::vector<std::unique_ptr<Command>> commands;
 
 public:
     SessionState();

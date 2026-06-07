@@ -32,6 +32,12 @@ std::vector<UserDto> UserServiceImpl::getAll()
     return result;
 }
 
+UserDto UserServiceImpl::getById(unsigned int id)
+{
+    User user = userRepository.getById(id);
+    return UserDto(user.getId(), user.getUsername(), user.getFullName(), user.getRole(), user.getCreatedAt());
+}
+
 void UserServiceImpl::changeRole(unsigned int id, User::Role newRole)
 {
     User user = userRepository.getById(id);

@@ -10,6 +10,6 @@ std::string LogoutCommand::getDescription() const { return "Logs out of the curr
 void LogoutCommand::execute(UIContext& context)
 {
     context.getAuthService().logout();
-    Printer::printSuccess("Logged out successfuly");
+    Printer::printSuccess("Logged out successfully");
     context.transitionTo(std::make_unique<LoginState>());
 }

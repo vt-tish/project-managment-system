@@ -32,6 +32,7 @@ public:
     void create(const CreateTaskDto& createTaskDto, std::string creatorUsername) override;
     Task getInProgressTaskById(unsigned int id) override;
     std::vector<Task> getInbox() const override;
+    Task getFirstInboxTask() const override;
     std::vector<Task> getTodo() const override;
     std::vector<Task> getInProgress() const override;
     std::vector<Task> getDone() const override;

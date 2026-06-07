@@ -4,6 +4,7 @@
 #include <string>
 
 #include <src/helpers/ui/input.hpp>
+#include <src/helpers/ui/printer.hpp>
 
 void Input::checkExit(const std::string& inp)
 {
@@ -34,11 +35,11 @@ void Input::inputNumber(const std::string question, unsigned int& out)
                 return;
             }
 
-            std::cout << "Error: input is not a number\n";
+            Printer::printError("Input is not a number");
         } 
         catch (std::exception& ex) 
         {
-            std::cout << ex.what() << std::endl;
+            Printer::printError(ex.what());
             continue;
         }
     }
@@ -66,11 +67,11 @@ void Input::inputNumber(const std::string question, float& out)
                 return;
             }
 
-            std::cout << "Error: input is not a floating point number\n";
+            Printer::printError("Input is not a floating point number");
         } 
         catch (std::exception& ex) 
         {
-            std::cout << ex.what() << std::endl;
+            Printer::printError(ex.what());
             continue;
         }
     }
@@ -85,18 +86,18 @@ void Input::inputLogic(const std::string question, bool& out)
 
         checkExit(inp);
 
-        if (inp == "yes")
+        if (inp == "y" || inp == "Y")
         {
             out = true;
             return;
         }
-        if (inp == "no")
+        if (inp == "n" || inp == "N")
         {
             out = false;
             return;
         }
 
-        std::cout << "Error: invalid logic option, should be yes/no\n";
+        Printer::printError("Invalid logic option, should be y/n");
     }
 }
 void Input::inputString(const std::string question, std::string& out)

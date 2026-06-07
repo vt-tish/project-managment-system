@@ -12,6 +12,7 @@ public:
     virtual ~UserService() = default;
     virtual void create(CreateUserDto createUserDto) = 0;
     virtual std::vector<UserDto> getAll() = 0;
+    virtual UserDto getById(unsigned int id) = 0;
     virtual void changeRole(unsigned int id , User::Role newRole) = 0;
     virtual void deleteById(unsigned int id) = 0;
 

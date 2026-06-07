@@ -29,6 +29,7 @@ void TaskServiceImpl::create(const CreateTaskDto& createTaskDto, std::string cre
 }
 Task TaskServiceImpl::getInProgressTaskById(unsigned int id) { return inProgressRepository.getById(id); }
 std::vector<Task> TaskServiceImpl::getInbox() const { return inboxRepository.getAll(); }
+Task TaskServiceImpl::getFirstInboxTask() const { return inboxRepository.getFirst(); }
 std::vector<Task> TaskServiceImpl::getTodo() const { return todoRepository.getSorted(); }
 std::vector<Task> TaskServiceImpl::getInProgress() const { return inProgressRepository.getAll(); }
 std::vector<Task> TaskServiceImpl::getDone() const { return doneRepository.getAll(); }

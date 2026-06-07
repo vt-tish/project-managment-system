@@ -18,6 +18,12 @@ std::vector<UserDto> SecurityUserProxy::getAll()
     return userService.getAll();
 }
 
+UserDto SecurityUserProxy::getById(unsigned int id)
+{
+    checkRole(User::DEVELOPER);
+    return userService.getById(id);
+}
+
 void SecurityUserProxy::changeRole(unsigned int id, User::Role newRole)
 {
     checkRole(User::Role::ADMIN);

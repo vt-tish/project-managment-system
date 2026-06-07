@@ -20,6 +20,12 @@ std::vector<Task> SecurityTaskProxy::getInbox() const
     return taskService.getInbox();
 }
 
+Task SecurityTaskProxy::getFirstInboxTask() const
+{
+    checkRole(User::MANAGER);
+    return taskService.getFirstInboxTask();
+}
+
 std::vector<Task> SecurityTaskProxy::getTodo() const
 {
     checkRole(User::DEVELOPER);

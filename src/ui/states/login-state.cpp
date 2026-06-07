@@ -20,6 +20,9 @@ std::string LoginState::getPromptPrefix(UIContext& context) const
 }
 void LoginState::handleInput(UIContext& context, const std::string& input)
 {
+    if (input.empty())
+        return;
+
     if (input != "login")
     {
         Printer::printError("Unknown command - " + input);
@@ -40,5 +43,6 @@ void LoginState::handleInput(UIContext& context, const std::string& input)
         return;
     }
 
+    Printer::printSuccess("Logged in successfully");
     context.transitionTo(std::make_unique<SessionState>());
 }

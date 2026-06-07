@@ -1,5 +1,7 @@
 #include <iostream>
+
 #include <src/ui/cli-app.hpp>
+#include <src/helpers/ui/printer.hpp>
 #include <src/ui/states/login-state.hpp>
 
 CLIApp::CLIApp()
@@ -42,7 +44,7 @@ void CLIApp::run()
 
         if (input == "exit")
         {
-            std::cout << "Exit" << std::endl;
+            std::cout << "\tExit" << std::endl;
             break;
         }
 
@@ -50,7 +52,13 @@ void CLIApp::run()
         {
             uiContext->handleInput(input);
         } catch (const std::exception& e) {
-            std::cout << e.what() << std::endl;
+            if (std::string(e.what()) == "Exit")
+            {
+                std::cout << "\tExit" << std::endl;
+                break;
+            }
+
+            Printer::printError(e.what());
         }
     }
 }
