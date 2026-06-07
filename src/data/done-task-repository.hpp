@@ -7,5 +7,6 @@ class DoneTaskRepository : public virtual Repository<Task>
 {
 public:
     virtual ~DoneTaskRepository() = default;
+    virtual void deleteById(unsigned int id) = 0;
 
 };

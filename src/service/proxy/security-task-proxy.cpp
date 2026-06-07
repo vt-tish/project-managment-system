@@ -38,6 +38,12 @@ std::vector<Task> SecurityTaskProxy::getDone() const
     return taskService.getDone();
 }
 
+Task SecurityTaskProxy::getInProgressTaskById(unsigned int id)
+{
+    checkRole(User::DEVELOPER);
+    return taskService.getInProgressTaskById(id);
+}
+
 std::vector<Task> SecurityTaskProxy::getInProgressByUserId(unsigned int userId) const
 {
     checkRole(User::DEVELOPER);
@@ -48,14 +54,14 @@ std::vector<Task> SecurityTaskProxy::getInProgressByUserId(unsigned int userId) 
     return taskService.getInProgressByUserId(userId);
 }
 
-std::vector<Task> SecurityTaskProxy::getDoneByUser(unsigned int userId) const
+std::vector<Task> SecurityTaskProxy::getDoneByUserId(unsigned int userId) const
 {
     checkRole(User::DEVELOPER);
 
     if (userId != authService.getCurrentUserId() && authService.getCurrentRole() < User::MANAGER)
         throw std::runtime_error("Access denied. You can only view your own tasks");
 
-    return taskService.getDoneByUser(userId);
+    return taskService.getDoneByUserId(userId);
 }
 
 void SecurityTaskProxy::moveToTodo(const MoveTaskToTodoDto &moveTaskToTodoDto)

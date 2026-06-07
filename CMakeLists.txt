@@ -58,8 +58,17 @@ else()
             src/ui/states/login-state.cpp
             src/ui/states/session-state.hpp
             src/ui/ui-context.cpp
+            src/ui/commands/command.hpp
+            src/ui/commands/archive-done-command.hpp
+            src/ui/commands/archive-done-command.cpp
+            src/ui/commands/logout-command.hpp
+            src/ui/commands/logout-command.cpp
             src/helpers/ui/task-string-builder.hpp
             src/helpers/ui/task-string-builder.cpp
-            src/ui/states/session-state.cpp)
+            src/ui/states/session-state.cpp
+            src/ui/cli-app.hpp
+            src/ui/cli-app.cpp
+            src/helpers/ui/printer.hpp
+            src/helpers/ui/printer.cpp)
     target_include_directories(app PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 endif()

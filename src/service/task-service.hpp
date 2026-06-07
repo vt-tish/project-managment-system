@@ -17,7 +17,7 @@ public:
     virtual std::vector<Task> getInProgress() const = 0;
     virtual std::vector<Task> getDone() const = 0;
     virtual std::vector<Task> getInProgressByUserId(unsigned int userId) const = 0;
-    virtual std::vector<Task> getDoneByUser(unsigned int userId) const = 0;
+    virtual std::vector<Task> getDoneByUserId(unsigned int userId) const = 0;
     virtual void moveToTodo(const MoveTaskToTodoDto& moveTaskToTodoDto) = 0;
     virtual Task moveToInProgress(unsigned int userId) = 0;
     virtual void moveToDone(unsigned int taskId) = 0;

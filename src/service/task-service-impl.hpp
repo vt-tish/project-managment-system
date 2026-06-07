@@ -36,7 +36,7 @@ public:
     std::vector<Task> getInProgress() const override;
     std::vector<Task> getDone() const override;
     std::vector<Task> getInProgressByUserId(unsigned int userId) const override;
-    std::vector<Task> getDoneByUser(unsigned int userId) const override;
+    std::vector<Task> getDoneByUserId(unsigned int userId) const override;
     void moveToTodo(const MoveTaskToTodoDto& moveTaskToTodoDto) override;
     Task moveToInProgress(unsigned int userId) override;
     void moveToDone(unsigned int taskId) override;

@@ -1,5 +1,7 @@
 #include <stdexcept>
+#include <fstream>
 #include <src/service/task-service-impl.hpp>
+#include <src/helpers/ui/task-string-builder.hpp>
 
 TaskServiceImpl::TaskServiceImpl(InboxTaskRepository& inboxRepository, TodoTaskRepository& todoRepository,
                                  InProgressTaskRepository& inProgressRepository, DoneTaskRepository& doneRepository,
@@ -45,7 +47,7 @@ std::vector<Task> TaskServiceImpl::getInProgressByUserId(unsigned int userId) co
 
     return result;
 }
-std::vector<Task> TaskServiceImpl::getDoneByUser(unsigned int userId) const
+std::vector<Task> TaskServiceImpl::getDoneByUserId(unsigned int userId) const
 {
     std::vector<Task> result;
 
@@ -127,7 +129,42 @@ void TaskServiceImpl::markAsDone(unsigned int taskId, unsigned int subtaskId)
 }
 void TaskServiceImpl::archiveDone(std::string fileName)
 {
+    std::ofstream fout(fileName, std::ios::app);
+    if (!fout.is_open())
+        throw std::runtime_error("Failed to open file for archiving: " + fileName);
 
+    std::vector<Task> doneTasks = doneRepository.getAll();
+
+    if (doneTasks.empty())
+        throw std::runtime_error("Done task list is empty");
+
+    for (const Task& task : doneTasks)
+    {
+        std::string creatorName = "Unknown";
+        try { creatorName = userRepository.getById(task.getCreatedByUserId()).getUsername(); } catch (...) {}
+
+        std::string assigneeName = "";
+        try { assigneeName = userRepository.getById(task.getAssignedUserId()).getUsername(); } catch (...) {}
+
+        std::string formatted = TaskStringBuilder(task)
+            .appendId()
+            .appendTitle()
+            .appendDescription()
+            .appendCreator(creatorName)
+            .appendAssignee(assigneeName)
+            .appendPriority()
+            .appendPoints()
+            .appendStatus()
+            .appendSubtasks()
+            .appendTimestamps()
+            .build();
+
+        fout << "=======================================\n";
+        fout << formatted;
+        fout << "=======================================\n\n";
+
+        doneRepository.deleteById(task.getId());
+    }
 }
 
 void TaskServiceImpl::validatePriority(unsigned int priority)

@@ -8,5 +8,7 @@ class DoneTaskFileRepository : public BaseFileRepository<Task>, public DoneTaskR
 {
 public:
     DoneTaskFileRepository();
+public:
+    void deleteById(unsigned int id) override;
 
 };
