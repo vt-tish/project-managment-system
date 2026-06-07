@@ -1,0 +1,46 @@
+#pragma once
+
+#include <src/entities/task.hpp>
+#include <src/data/inbox-task-repository.hpp>
+#include <src/data/todo-task-repository.hpp>
+#include <src/data/user-repository.hpp>
+#include <src/data/done-task-repository.hpp>
+#include <src/data/in-progress-task-repository.hpp>
+#include <src/dtos/create-task-dto.hpp>
+#include <src/dtos/move-task-to-todo-dto.hpp>
+#include <src/service/task-service.hpp>
+
+class TaskServiceImpl : public TaskService
+{
+private:
+    InboxTaskRepository& inboxRepository;
+    TodoTaskRepository& todoRepository;
+    InProgressTaskRepository& inProgressRepository;
+    DoneTaskRepository& doneRepository;
+    UserRepository& userRepository;
+
+private:
+    static void validatePriority(unsigned int priority);
+    static void validatePoints(unsigned int points);
+    static void validateHours(float hours);
+
+public:
+    TaskServiceImpl(InboxTaskRepository& inboxRepository, TodoTaskRepository& todoRepository,
+        InProgressTaskRepository& inProgressRepository, DoneTaskRepository& doneRepository,
+        UserRepository& userRepository);
+public:
+    void create(const CreateTaskDto& createTaskDto, std::string creatorUsername) override;
+    Task getInProgressTaskById(unsigned int id) override;
+    std::vector<Task> getInbox() const override;
+    std::vector<Task> getTodo() const override;
+    std::vector<Task> getInProgress() const override;
+    std::vector<Task> getDone() const override;
+    std::vector<Task> getInProgressByUserId(unsigned int userId) const override;
+    std::vector<Task> getDoneByUser(unsigned int userId) const override;
+    void moveToTodo(const MoveTaskToTodoDto& moveTaskToTodoDto) override;
+    Task moveToInProgress(unsigned int userId) override;
+    void moveToDone(unsigned int taskId) override;
+    void markAsDone(unsigned int taskId, unsigned int subtaskId) override;
+    void archiveDone(std::string fileName) override;
+
+};
