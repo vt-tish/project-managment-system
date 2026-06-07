@@ -66,7 +66,7 @@ TaskStringBuilder& TaskStringBuilder::appendStatus()
     
     std::stringstream ss;
     ss << std::fixed << std::setprecision(1) << task.getHours();
-    result += indentStr + "Hours Spent: " + ss.str() + "\n";
+    result += indentStr + "Hours: " + ss.str() + "\n";
     
     return *this;
 }

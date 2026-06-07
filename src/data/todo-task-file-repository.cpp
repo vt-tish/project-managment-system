@@ -14,7 +14,11 @@ std::vector<Task>::iterator TodoTaskFileRepository::end()
 {
     return PriorityQueueExposer<Task>::getContainer(entities).end();
 }
-void TodoTaskFileRepository::add(const Task& entity) { entities.push(entity); }
+void TodoTaskFileRepository::add(const Task& entity)
+{
+    entities.push(entity);
+    hasChanged = true;
+}
 void TodoTaskFileRepository::onEntityUpdated(const Task& oldEntity, const Task& newEntity)
 {
     if (oldEntity.getPriority() != newEntity.getPriority())
@@ -42,6 +46,8 @@ const std::vector<Task>& TodoTaskFileRepository::getSorted()
     if (!hasChanged)
         return sortedTasks;
 
+    sortedTasks.clear();
+
     std::priority_queue<Task> tmp = entities;
 
     while (!tmp.empty())
@@ -65,6 +71,7 @@ void TodoTaskFileRepository::deleteById(unsigned int id)
         {
             tasks.erase(tasks.begin() + i);
             std::make_heap(begin(), end());
+            hasChanged = true;
             return;
         }
     }

@@ -1,5 +1,5 @@
 #include <iostream>
-#include <src/helpers/ui/printer.hpp>
+
 #include <src/ui/commands/move-to-in-progress-command.hpp>
 #include <src/ui/ui-context.hpp>
 #include <src/helpers/ui/task-string-builder.hpp>

@@ -14,6 +14,8 @@
 #include <src/service/proxy/security-user-proxy.hpp>
 #include <src/ui/ui-context.hpp>
 
+#define SEED_TEST_DATA
+
 class CLIApp
 {
 private:
@@ -33,6 +35,9 @@ private:
     std::unique_ptr<SecurityUserProxy> userService;
 
     std::unique_ptr<UIContext> uiContext;
+
+public:
+    void seedTestData() const;
 
 public:
     CLIApp();

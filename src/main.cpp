@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include <src/ui/cli-app.hpp>
 
 int main() 
