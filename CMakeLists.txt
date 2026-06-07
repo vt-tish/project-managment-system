@@ -59,6 +59,7 @@ else()
             src/ui/states/session-state.hpp
             src/ui/ui-context.cpp
             src/helpers/ui/task-string-builder.hpp
-            src/helpers/ui/task-string-builder.cpp)
+            src/helpers/ui/task-string-builder.cpp
+            src/ui/states/session-state.cpp)
     target_include_directories(app PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 endif()

@@ -1,5 +1,3 @@
-#pragma  once
-
 #include <iostream>
 
 #include <src/ui/states/login-state.hpp>
@@ -10,7 +8,7 @@
 
 void LoginState::render()
 {
-    std::cout << "========== Kanban Dashboard ==========" << std::endl;
+    std::cout << "\n========== Kanban Dashboard ==========" << std::endl;
 }
 std::string LoginState::getPromptPrefix(UIContext& context) const
 {

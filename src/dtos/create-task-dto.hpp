@@ -12,7 +12,7 @@ public:
     const std::vector<CreateSubtaskDto> subtasks;
 
 public:
-    CreateTaskDto(std::string title, std::string description, std::vector<std::string> subtasks)
+    CreateTaskDto(std::string title, std::string description, std::vector<CreateSubtaskDto> subtasks)
     :
         title(std::move(title)),
         description(std::move(description)),

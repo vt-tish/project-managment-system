@@ -10,6 +10,21 @@ protected:
     AuthService& authService;
 
 protected:
+    void checkRole(User::Role minRequiredRole) const
+    {
+        if (authService.getCurrentRole() < minRequiredRole)
+            throw std::runtime_error("Access denied. " + roleToString(minRequiredRole) +
+                " rights are required, given - " + roleToString(authService.getCurrentRole()));
+    }
+
+public:
+    BaseSecurityProxy(AuthService& authService)
+    :
+        authService(authService)
+    {}
+
+    virtual ~BaseSecurityProxy() = default;
+
     static std::string roleToString(User::Role role)
     {
         switch (role)
@@ -26,20 +41,5 @@ protected:
                 return "UNKNOWN";
         }
     }
-
-    void checkRole(User::Role minRequiredRole) const
-    {
-        if (authService.getCurrentRole() < minRequiredRole)
-            throw std::runtime_error("Access denied. " + roleToString(minRequiredRole) +
-                " rights are required, given - " + roleToString(authService.getCurrentRole()));
-    }
-
-public:
-    BaseSecurityProxy(AuthService& authService)
-    :
-        authService(authService)
-    {}
-
-    virtual ~BaseSecurityProxy() = default;
 
 };

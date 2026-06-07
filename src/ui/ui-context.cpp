@@ -1,5 +1,3 @@
-#pragma once
-
 #include <src/ui/ui-context.hpp>
 
 UIContext::UIContext(std::unique_ptr<UIState> initState, AuthService &authService)
@@ -16,5 +14,4 @@ void UIContext::transitionTo(std::unique_ptr<UIState> newState)
     currentState->render();
 }
 
-AuthService & UIContext::getAuthService() {
-}
+AuthService& UIContext::getAuthService() { return authService; }

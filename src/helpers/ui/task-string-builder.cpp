@@ -45,6 +45,21 @@ TaskStringBuilder& TaskStringBuilder::appendPoints()
     return *this;
 }
 
+TaskStringBuilder& TaskStringBuilder::appendCreator(const std::string& creator)
+{
+    result += indentStr + "Created By: " + creator + "\n";
+    return *this;
+}
+
+TaskStringBuilder& TaskStringBuilder::appendAssignee(const std::string& assignee)
+{
+    if (!assignee.empty())
+        result += indentStr + "Assigned To: " + assignee + "\n";
+    else
+        result += indentStr + "Assigned To: Unassigned\n";
+    return *this;
+}
+
 TaskStringBuilder& TaskStringBuilder::appendStatus()
 {
     result += indentStr + "Status: " + (task.getIsDone() ? "Done" : "In Progress") + "\n";

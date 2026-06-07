@@ -21,6 +21,8 @@ public:
     TaskStringBuilder& appendDescription();
     TaskStringBuilder& appendPriority();
     TaskStringBuilder& appendPoints();
+    TaskStringBuilder& appendCreator(const std::string& creator);
+    TaskStringBuilder& appendAssignee(const std::string& assignee);
     TaskStringBuilder& appendStatus();
     TaskStringBuilder& appendSubtasks();
     TaskStringBuilder& appendTimestamps();
