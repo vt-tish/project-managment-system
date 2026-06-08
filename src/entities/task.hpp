@@ -25,7 +25,7 @@ private:
         unsigned int priority = 0;
         unsigned int points = 0;
         unsigned int assignedUserId = 0;
-        unsigned int createdByUserId;
+        unsigned int createdByUserId = 0;
 
         friend class Task;
 

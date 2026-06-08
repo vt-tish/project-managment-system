@@ -124,9 +124,8 @@ void TaskServiceImpl::markAsDone(unsigned int taskId, unsigned int subtaskId)
     if (subtask.getIsDone())
         throw std::runtime_error("Subtask is already done");
 
-    inProgressRepository.save(task);
-
     subtask.setDone();
+    inProgressRepository.save(task);
 }
 void TaskServiceImpl::archiveDone(std::string fileName)
 {

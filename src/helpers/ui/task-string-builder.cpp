@@ -79,7 +79,8 @@ TaskStringBuilder& TaskStringBuilder::appendSubtasks()
         result += indentStr + "Subtasks:\n";
         for (const Subtask& subtask : subtasks)
         {
-            result += indentStr + "  - [" + (subtask.getIsDone() ? "x" : " ") + "] " 
+            result += indentStr + "  - [" + (subtask.getIsDone() ? "x" : " ") + "] "
+                      + "[ID:" + std::to_string(subtask.getId()) + "] "
                       + subtask.getTitle();
                       
             std::stringstream ss;

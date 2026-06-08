@@ -24,6 +24,7 @@ void Task::read(ByteStream& byteStream)
     byteStream.read(priority);
     byteStream.read(points);
     byteStream.read(assignedUserId);
+    byteStream.read(createdByUserId);
     byteStream.read(subtasks);
 }
 void Task::write(ByteStream& byteStream) const {
@@ -34,6 +35,7 @@ void Task::write(ByteStream& byteStream) const {
     byteStream.write(priority);
     byteStream.write(points);
     byteStream.write(assignedUserId);
+    byteStream.write(createdByUserId);
     byteStream.write(subtasks);
 }
 
