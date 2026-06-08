@@ -4,5 +4,8 @@ build/
 # Ignore VScode settings
 .vscode/
 
+# Ignore idea settings
+.idea/
+
 # Ignore cache
 .cache/
